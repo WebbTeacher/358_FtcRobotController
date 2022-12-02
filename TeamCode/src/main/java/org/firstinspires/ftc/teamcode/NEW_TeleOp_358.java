@@ -1,6 +1,7 @@
 /* Copyright (c) 2017 FIRST. All rights reserved.
+
  *
- * 
+ *
  */
 
 package org.firstinspires.ftc.teamcode;
@@ -59,28 +60,28 @@ public class NEW_TeleOp_358 extends OpMode {
         //------------WHEEL CODE----------------
         //======================================
 
-            double stickX = 0;
-            double stickY = 0;
-            double v1 = 0;
-            double v2 = 0;
-            double vm = 0;
-            if (Math.abs(gamepad1.left_stick_x) > 0.2)
-            {
-                stickX = gamepad1.left_stick_x;
-                v1 = stickX;
-                v2 = -stickX;
-                //stickY = 0;
-            }
-            if (Math.abs(gamepad1.left_stick_y) > 0.2){
-                stickY = gamepad1.left_stick_y;
-                v1 = -stickY;
-                v2 = -stickY;
-                //stickX = 0;
-            }
-            if (Math.abs(gamepad1.right_stick_y) > 0.2)
-            {
-                vm = gamepad1.right_stick_y;
-            }
+        double stickX = 0;
+        double stickY = 0;
+        double v1 = 0;
+        double v2 = 0;
+        double vm = 0;
+        if (Math.abs(gamepad1.left_stick_x) > 0.2)
+        {
+            stickX = gamepad1.left_stick_x;
+            v1 = stickX;
+            v2 = -stickX;
+            //stickY = 0;
+        }
+        if (Math.abs(gamepad1.left_stick_y) > 0.2){
+            stickY = gamepad1.left_stick_y;
+            v1 = -stickY;
+            v2 = -stickY;
+            //stickX = 0;
+        }
+        if (Math.abs(gamepad1.right_stick_y) > 0.2)
+        {
+            vm = gamepad1.right_stick_y;
+        }
 //
 //            //variables
 //           if(Math.abs(stickY) > stickX)
@@ -97,36 +98,36 @@ public class NEW_TeleOp_358 extends OpMode {
 
 
 
-            if (gamepad1.left_bumper || gamepad2.left_bumper) {//if the left bumper is pressed, it multiplies the total power by the precision driving modifer
-                precisionActive = reductionModifier;
-            } else if (gamepad1.right_bumper || gamepad2.right_bumper) {
-                precisionActive = turboModifier;//right bumper = turbo mode (for crossing the barriers)
-            } else {
-                precisionActive = 1f; //no modifier
-            }
+        if (gamepad1.left_bumper || gamepad2.left_bumper) {//if the left bumper is pressed, it multiplies the total power by the precision driving modifer
+            precisionActive = reductionModifier;
+        } else if (gamepad1.right_bumper || gamepad2.right_bumper) {
+            precisionActive = turboModifier;//right bumper = turbo mode (for crossing the barriers)
+        } else {
+            precisionActive = 1f; //no modifier
+        }
 
 
-            robot.lf.setPower(-speedModifier * v1 * precisionActive);
-            robot.rf.setPower(-speedModifier * v2 * precisionActive);
-            robot.lb.setPower(-speedModifier * v1 * precisionActive);
-            robot.rb.setPower(-speedModifier * v2 * precisionActive);
-            robot.lift.setPower(-speedModifier * vm * precisionActive);
+        robot.lf.setPower(-speedModifier * v1 * precisionActive);
+        robot.rf.setPower(-speedModifier * v2 * precisionActive);
+        robot.lb.setPower(-speedModifier * v1 * precisionActive);
+        robot.rb.setPower(-speedModifier * v2 * precisionActive);
+        robot.lift.setPower(-speedModifier * vm * precisionActive);
 
-            telemetry.addData("fLPower", -speedModifier * v1 * precisionActive);
-            telemetry.addData("fRPower", -speedModifier * v2 * precisionActive);
-            telemetry.addData("bLPower", -speedModifier * v1 * precisionActive);
-            telemetry.addData("bRPower", -speedModifier * v2 * precisionActive);
-            telemetry.addData("MPower", -speedModifier * vm * precisionActive);
-            telemetry.addData("LEFTPower", gamepad1.left_stick_x);
-
-
+        telemetry.addData("fLPower", -speedModifier * v1 * precisionActive);
+        telemetry.addData("fRPower", -speedModifier * v2 * precisionActive);
+        telemetry.addData("bLPower", -speedModifier * v1 * precisionActive);
+        telemetry.addData("bRPower", -speedModifier * v2 * precisionActive);
+        telemetry.addData("MPower", -speedModifier * vm * precisionActive);
+        telemetry.addData("LEFTPower", gamepad1.left_stick_x);
 
 
-            telemetry.addData("Encoder port 1 back left", robot.lb.getCurrentPosition());
-            telemetry.addData("Encoder port 2 front right", robot.rf.getCurrentPosition());
-            telemetry.addData("Encoder port 3 back right", robot.rb.getCurrentPosition());
-            telemetry.addData("Encoder port 4 back left", robot.lb.getCurrentPosition());
-            telemetry.addData("Encoder port 0 back left", robot.m.getCurrentPosition());
+
+
+//        telemetry.addData("Encoder port 1 back left", robot.lb.getCurrentPosition());
+//        telemetry.addData("Encoder port 2 front right", robot.rf.getCurrentPosition());
+//        telemetry.addData("Encoder port 3 back right", robot.rb.getCurrentPosition());
+//        telemetry.addData("Encoder port 4 back left", robot.lb.getCurrentPosition());
+//        telemetry.addData("Encoder port 0 back left", robot.m.getCurrentPosition());
 
 
 
@@ -150,7 +151,7 @@ public class NEW_TeleOp_358 extends OpMode {
             robot.rightServo.setPosition(1);
             telemetry.addData("Neither", gamepad1.b);
         }
-            //        if (gamepad1.dpad_up || gamepad2.dpad_up) {
+        //        if (gamepad1.dpad_up || gamepad2.dpad_up) {
 //            robot.rotateRight.setPower(-.2 * precisionActive);
 //            robot.rotateLeft.setPower(-.2 * precisionActive);
 //            telemetry.addData("Rotator State", "Up"); //be careful wherever you go.
@@ -195,5 +196,4 @@ public class NEW_TeleOp_358 extends OpMode {
         telemetry.update();
     }
 }
-
 

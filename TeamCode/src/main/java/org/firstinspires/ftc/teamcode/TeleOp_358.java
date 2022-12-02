@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  *
  */
 
-@TeleOp(name="oldeTeleop", group="reborn") // i will come soon. when the 3d print is done, make sure u watch ur back
+@TeleOp(name="FinalTeleop", group="reborn") // i will come soon. when the 3d print is done, make sure u watch ur back
 //@Disabled
 public class TeleOp_358 extends OpMode {
 

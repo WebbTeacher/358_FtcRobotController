@@ -92,7 +92,7 @@ public class BasicEncoderTest extends LinearOpMode {
     public void runOpMode() {
 
         // Initialize the drive system variables.
-         lf  = hardwareMap.get(DcMotor.class, "lf");
+         lf = hardwareMap.get(DcMotor.class, "lf");
          lb = hardwareMap.get(DcMotor.class, "lb");
          rf = hardwareMap.get(DcMotor.class, "rf");
          rb = hardwareMap.get(DcMotor.class, "rb");
@@ -100,8 +100,8 @@ public class BasicEncoderTest extends LinearOpMode {
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-         lf.setDirection(DcMotor.Direction.FORWARD);
-         lb.setDirection(DcMotor.Direction.FORWARD);
+         lf.setDirection(DcMotor.Direction.REVERSE);
+         lb.setDirection(DcMotor.Direction.REVERSE);
          rf.setDirection(DcMotor.Direction.FORWARD);
          rb.setDirection(DcMotor.Direction.FORWARD);
 
@@ -131,7 +131,9 @@ public class BasicEncoderTest extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
+        encoderRL(1,  1500,  5.0);
         encoderDrive(1,  1500,  5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+
 //        encoderDrive(-1, 1500, 5.0);
 //        encoderDrive(0.5, 1500, 5.0);
 //        encoderDrive(-0.5, 1500, 5.0);
@@ -167,10 +169,14 @@ public class BasicEncoderTest extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newmotor1Target = lf.getCurrentPosition() + (int)(counts);
-            newmotor2Target = lb.getCurrentPosition() + (int)(counts);
-            newmotor3Target = rf.getCurrentPosition() + (int)(counts);
-            newmotor4Target = rb.getCurrentPosition() + (int)(counts);
+//            newmotor1Target = lf.getCurrentPosition() + (int)(counts);
+//            newmotor2Target = lb.getCurrentPosition() + (int)(counts);
+//            newmotor3Target = rf.getCurrentPosition() + (int)(counts);
+//            newmotor4Target = rb.getCurrentPosition() + (int)(counts);
+            newmotor1Target = lf.getCurrentPosition() + 7000;
+            newmotor2Target = lb.getCurrentPosition() + 7000;
+            newmotor3Target = rf.getCurrentPosition() + 7000;
+            newmotor4Target = rb.getCurrentPosition() + 7000;
             lf.setTargetPosition(newmotor1Target);
             lb.setTargetPosition(newmotor2Target);
             rf.setTargetPosition(newmotor3Target);
@@ -217,6 +223,53 @@ public class BasicEncoderTest extends LinearOpMode {
             // Turn off RUN_TO_POSITION
             lf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             lb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            sleep(250);   // optional pause after each move.
+        }
+    }
+    public void encoderRL(double speed, double counts, double timeoutS) {
+        int newmotor1Target;
+        int newmotor2Target;
+        int newmotor3Target;
+        int newmotor4Target;
+
+        // Ensure that the opmode is still active
+        if (opModeIsActive()) {
+
+            // Determine new target position, and pass to motor controller
+//            newmotor1Target = lf.getCurrentPosition() + (int)(counts);
+//            newmotor2Target = lb.getCurrentPosition() + (int)(counts);
+//            newmotor3Target = rf.getCurrentPosition() + (int)(counts);
+//            newmotor4Target = rb.getCurrentPosition() + (int)(counts);
+            newmotor3Target = rf.getCurrentPosition() + 7000;
+            newmotor4Target = rb.getCurrentPosition() + 7000;
+            rf.setTargetPosition(newmotor3Target);
+            rb.setTargetPosition(newmotor4Target);
+            // Turn On RUN_TO_POSITION
+            rf.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            rb.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+            // reset the timeout time and start motion.
+            runtime.reset();
+            rf.setPower(Math.abs(speed));
+            rb.setPower(Math.abs(speed));
+
+
+            // keep looping while we are still active, and there is time left, and both motors are running.
+            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+            // always end the motion as soon as possible.
+            // However, if you require that BOTH motors have finished their moves before the robot continues
+            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+
+            // Stop all motion;
+            rf.setPower(0);
+            rb.setPower(0);
+
+            // Turn off RUN_TO_POSITION
             rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

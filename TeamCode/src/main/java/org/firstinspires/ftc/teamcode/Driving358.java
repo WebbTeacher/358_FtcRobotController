@@ -48,11 +48,11 @@ public class Driving358 extends LinearOpMode {
         robot.rf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //.m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-   //     robot.rotateRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //     robot.rotateRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //     robot.rotateRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-   }
-//
+    }
+    //
 //    public void distanceMove(double distance, boolean relativeMove){
 //        double reversePercent = 1; //speed percentage when going backward
 //        double power = .1; //this is the power for the 2022 neverest20 motors
@@ -61,7 +61,7 @@ public class Driving358 extends LinearOpMode {
 //        //RELATIVE (relative move = true): move 20 cm from where I am now (if you start 10 cm from the wall, you will move 20 cm to a total of 30 cm)
 //        //ABSOLUTE (relative move = false): move until you are 20 cm from wall (if you start 10 cm from the wall, you will move 10cm, to a total of 20 cm)
 //
-//        
+//
 //        double goalDist = distance;
 ////        if(relativeMove) {
 ////            goalDist+=startingDist;

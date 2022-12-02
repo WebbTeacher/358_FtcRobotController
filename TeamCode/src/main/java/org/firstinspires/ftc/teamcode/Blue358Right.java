@@ -139,13 +139,13 @@ public class Blue358Right extends Driving358
         telemetry.update();
         telemetry.addData("Action", "Initial Move");
         telemetry.update();
-       // strafeMove(40, false);
+        // strafeMove(40, false);
         sleep(2000);
         int lateralMoveDistance = 25;
         int angleAmount = 95;
         switch(parkLevel){//moves to the alliance shipping hub based on what it reads
             case (1)://Warehouse close. Scoring level 1. Bottom
-                 //levelLift('l');
+                //levelLift('l');
                 //rotate(.5, 'r', angleAmount);
                 move(.6, 'f', 35);
                 move(.6, 'l', 60);
@@ -183,12 +183,12 @@ public class Blue358Right extends Driving358
         //move (.2, 'r', 5);//untested
         //robot.duckSpinner.setPower(-.1);
         //sleep(2000);
-      //  robot.duckSpinner.setPower(0);
+        //  robot.duckSpinner.setPower(0);
         //move(.3, 'b', 5);
 
         //rotate(0.5, 'l',100);
 
-     //   distanceMove(65, false);
+        //   distanceMove(65, false);
 
         //move(0.4,'r',10);
     }

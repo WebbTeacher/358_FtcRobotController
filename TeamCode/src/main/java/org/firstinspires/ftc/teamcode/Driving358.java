@@ -8,7 +8,7 @@ public abstract class Driving358 extends LinearOpMode {
 
 
     Hardware358 robot = new Hardware358();
-
+int hi=8;
     private ElapsedTime runtime = new ElapsedTime();
 
     static final double     COUNTS_PER_MOTOR_REV    = 537.6 ;    // eg: REV Motor Encoder

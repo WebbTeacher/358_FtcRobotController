@@ -66,8 +66,34 @@ int hi=8;
        robot.rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
    }
 
-//
 
+//
+    public void lift(int direction, String position, double power,int remaining){
+        int tickConversion = 69; //How many ticks per 1cm of string pulled
+        int cmMove = 0;
+
+        if (position.equals("low")){
+            cmMove  = 35;
+        }
+        else if (position.equals("mid")){
+            cmMove  = 60;
+        }
+        else if (position.equals("high")){
+            cmMove  = 85;
+        }
+        else if (position.equals("sStation")){
+            cmMove  = 6 -(-remaining*5);
+        }
+        else if (position.equals("ground")){
+            cmMove = 2;
+        }
+
+        int ticks = tickConversion * cmMove * direction;
+        robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lift.setTargetPosition((ticks));
+        robot.lift.setPower(power);
+
+    }
     public void move(double power, char direction, double distance){
         double ticks = COUNTS_PER_INCH * distance/3;
 //        double ticks = 7.5* distance;

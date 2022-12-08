@@ -109,8 +109,16 @@ public class TeleOp_358 extends OpMode {
             } else {
                 stickR = gamepad2.right_stick_x;
             }
-            if (Math.abs(gamepad1.right_stick_y) > 0.2) {
-                vm = gamepad1.right_stick_y;
+            //======================================
+            //----------Lift--------------capyright 19888
+            //======================================
+            if (gamepad1.dpad_down) {
+                vm = -1;
+            }
+            if (gamepad1.dpad_up){
+                vm = 1;
+            }
+            if (gamepad1.a){
             }
             //variables
             double r = Math.hypot(-stickX, stickY); //ur mom is watching you from the ceiling. dont look up...
@@ -158,10 +166,6 @@ public class TeleOp_358 extends OpMode {
             robot.leftServo.setPosition(1);
             robot.rightServo.setPosition(0);
             telemetry.addData("Right Trigger", gamepad1.x);
-        } else if (gamepad1.b) {
-            robot.leftServo.setPosition(0);
-            robot.rightServo.setPosition(0);
-            telemetry.addData("Button B", gamepad1.b);
         } else {
             robot.leftServo.setPosition(0);
             robot.rightServo.setPosition(1);

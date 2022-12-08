@@ -116,6 +116,7 @@ public class Drop_Cone extends Driving358 {
 
         robot.leftServo.setPosition(1);
         robot.rightServo.setPosition(0);
+        lift(1,"low", 1,0);
         stop();
 //        robot.clawServo.setPosition(0.5);
 //        sleep(200);

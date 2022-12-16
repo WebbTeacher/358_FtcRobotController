@@ -15,8 +15,8 @@ int hi=8;
     static final double     DRIVE_GEAR_REDUCTION    = 2;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
-            (WHEEL_DIAMETER_INCHES * 3.25);
-    static final double     DRIVE_SPEED             = 0.6;
+            (WHEEL_DIAMETER_INCHES * 3.14);
+    static final double     DRIVE_SPEED             = 0.4;
     static final double     TURN_SPEED              = 0.5;
     static final double     INCHES_FOR_RIGHT_ANGLE  = 4;
 
@@ -48,6 +48,7 @@ int hi=8;
         robot.lb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
         //.m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
    //     robot.rotateRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //     robot.rotateRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -57,6 +58,7 @@ int hi=8;
        robot.lb.setMode(DcMotor.RunMode.RUN_TO_POSITION);
        robot.rf.setMode(DcMotor.RunMode.RUN_TO_POSITION);
        robot.rb.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
    }
    public void runUsingEncoders()
    {
@@ -64,14 +66,15 @@ int hi=8;
        robot.lb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
        robot.rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
        robot.rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
    }
 
 
 //
     public void lift(int direction, String position, double power,int remaining){
-        int tickConversion = 69; //How many ticks per 1cm of string pulled
+        //remaining is for the number of cones remaining in the stack
+        int tickConversion = (int)(COUNTS_PER_MOTOR_REV/(3.14));//145; //How many ticks per 1cm of string pulled
         int cmMove = 0;
-
         if (position.equals("low")){
             cmMove  = 35;
         }
@@ -81,18 +84,18 @@ int hi=8;
         else if (position.equals("high")){
             cmMove  = 85;
         }
-        else if (position.equals("sStation")){
-            cmMove  = 6 -(-remaining*5);
-        }
-        else if (position.equals("ground")){
-            cmMove = 2;
-        }
+
 
         int ticks = tickConversion * cmMove * direction;
         robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.lift.setTargetPosition((ticks));
         robot.lift.setPower(power);
 
+        while (robot.lift.isBusy())
+        {
+
+        }
+        robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
     public void move(double power, char direction, double distance){
         double ticks = COUNTS_PER_INCH * distance/3;

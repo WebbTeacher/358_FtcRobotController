@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 
 //import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -45,6 +46,8 @@ public class Hardware358 {
     public DcMotor lift = null;
     public Servo rightServo = null;
     public Servo leftServo = null;
+    TouchSensor touch;
+
 //    private DcMotor leftDrive   = null;
 //    private DcMotor rightDrive  = null;
 //    private DcMotor armMotor = null;
@@ -74,7 +77,7 @@ public class Hardware358 {
 //        leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_drive");
 //        rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive");
 //        armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "arm");
-
+        touch= HwMap.get(TouchSensor.class,"Touch");
         lf = HwMap.get(DcMotor.class, "lf");
         rf = HwMap.get(DcMotor.class, "rf");
         rb = HwMap.get(DcMotor.class, "rb");

@@ -111,8 +111,8 @@ public class REDautoTF extends Driving358 {
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
         waitForStart();
-        sleep(200);
-        move(.6, 'f', 10);
+        parkLevel = checkLevel();
+        move(.1, 'f', 10);
         sleep(200);
         parkLevel = checkLevel();
         telemetry.addData("Level","%d",parkLevel);
@@ -121,23 +121,23 @@ public class REDautoTF extends Driving358 {
 
         switch (parkLevel) {//moves to the alliance shipping hub based on what it reads
             case (1)://Warehouse close. Scoring level 1. Bottom
-
-                move(.6, 'l', 65);
-               move(.6, 'f', 65);
+                move(.6, 'l', 70);
+                move(.6, 'f', 65);
+                lift(1,"low", .5,0);
 
                 break;
             case (2)://Mid. Scoring level 2. Mid
 
                 move(.6, 'l', 15);
-               move(.6, 'f', 65);
+                move(.6, 'f', 65);
                 move(.6, 'r', 15);
-//                move(.6, 'r', 5);
+                move(.6, 'r', 5);
                 //distanceMove(25, false);
                 break;
             case (3)://warehouse far. scoring level 3 top
                 //levelLift('t');
 
-                move(.6, 'r', 75);
+                move(.6, 'r', 65);
                 move(.6, 'f', 65);
                 //distanceMove(45, false);
                 break;

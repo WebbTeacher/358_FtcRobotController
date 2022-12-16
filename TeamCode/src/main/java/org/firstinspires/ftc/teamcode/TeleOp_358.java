@@ -7,6 +7,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -62,9 +63,9 @@ public class TeleOp_358 extends OpMode {
     // Declare OpMode members.
 
     //methods to control the speed of the robot.
-    private float speedModifier = .9f;
-    private float reductionModifier = .3f;//the amount that the speed will be decreased in precision mode. Should be < 1
-    private float turboModifier = 1.5f;// the amount that the speed will be increased in turbo mode. Must be <2. No increase is 1.
+    private float speedModifier = .5f;
+    private float reductionModifier = .4f;//the amount that the speed will be decreased in precision mode. Should be < 1
+    private float turboModifier = 1.9f;// the amount that the speed will be increased in turbo mode. Must be <2. No increase is 1.
     private float precisionActive = 1f;
     private float turnReduction = .5f;//reduces the speed of turning. <1 to reduce. 1 if to leave as normal> yuh
     //private float BRDrive = 1f;
@@ -91,35 +92,89 @@ public class TeleOp_358 extends OpMode {
         //======================================
         //------------WHEEL CODE----------------
         //======================================
-        {
+
             double stickX = 0;
             double stickY = 0;
             double stickR = 0;
             double vm = 0;
-            if (Math.abs(gamepad1.left_stick_x) + Math.abs(gamepad1.left_stick_y) > Math.abs(gamepad2.left_stick_x) + Math.abs(gamepad2.left_stick_y)) {
+            if (Math.abs(gamepad1.left_stick_x) + Math.abs(gamepad1.left_stick_y) >.2) {
                 stickX = gamepad1.left_stick_x;
                 stickY = gamepad1.left_stick_y;
-            } else {
-                stickX = gamepad2.left_stick_x;
-                stickY = gamepad2.left_stick_y;
             }
+//            else {
+//                stickX = gamepad2.left_stick_x;
+//                stickY = gamepad2.left_stick_y;
+//            }
 
-            if (Math.abs(gamepad1.right_stick_x) > Math.abs(gamepad2.right_stick_x)) {
+            if (Math.abs(gamepad1.right_stick_x) >.2) {
                 stickR = gamepad1.right_stick_x;
-            } else {
-                stickR = gamepad2.right_stick_x;
             }
+//            else {
+//                stickR = gamepad2.right_stick_x;
+//            }
             //======================================
             //----------Lift--------------capyright 19888
             //======================================
-            if (gamepad1.dpad_down) {
-                vm = -1;
+
+
+            if (Math.abs(gamepad1.right_stick_y) >.2 ) {
+
+                vm = gamepad1.right_stick_y;
             }
-            if (gamepad1.dpad_up){
-                vm = 1;
+            if (Math.abs(gamepad2.right_stick_y) >.2 ) {
+
+                vm = gamepad2.right_stick_y;
             }
-            if (gamepad1.a){
+
+            //int ticks = tickConversion * cmMove * direction;
+            int tickConversion = (int)(Driving358.COUNTS_PER_MOTOR_REV/(3.14));
+            int cmMove = 0;
+            boolean enco=false;
+            //low level
+            if (gamepad2.a){
+                cmMove  = 15;
+                enco = true;
             }
+        //mid level
+
+            if (gamepad2.b){
+               cmMove = 40;
+                enco = true;
+            }
+        //high level
+            if (gamepad2.y) {
+                cmMove = 55;
+                enco = true;
+            }
+            if (enco) {
+                int ticks = tickConversion * cmMove;
+                robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                robot.lift.setTargetPosition((ticks));
+                robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.lift.setPower(.9);
+                while (robot.lift.isBusy()) {
+
+                }
+                robot.lift.setPower(0);
+                robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                enco = false;
+                cmMove = 0;
+            }
+
+            if (gamepad2.right_bumper){
+                robot.lift.setPower(-.5);
+                boolean test=true;
+                while (robot.lift.isBusy() || test ) {
+                    if(robot.touch.isPressed()){
+                        robot.lift.setPower(0);
+                        test=false;
+                        break;
+                    }
+
+                }
+
+            }
+
             //variables
             double r = Math.hypot(-stickX, stickY); //ur mom is watching you from the ceiling. dont look up...
             double robotAngle = Math.atan2(stickY, -stickX) - Math.PI / 4;
@@ -129,9 +184,16 @@ public class TeleOp_358 extends OpMode {
             final double v3 = r * Math.sin(robotAngle) + rightX; //the swedes are coming 4 u soon
             final double v4 = r * Math.cos(robotAngle) - rightX;
 
-            if (gamepad1.left_bumper || gamepad2.left_bumper) {//if the left bumper is pressed, it multiplies the total power by the precision driving modifer
+//            if (gamepad1.left_bumper || gamepad2.left_bumper) {//if the left bumper is pressed, it multiplies the total power by the precision driving modifer
+//                precisionActive = reductionModifier;
+//            } else if (gamepad1.right_bumper || gamepad2.right_bumper) {
+//                precisionActive = turboModifier;//right bumper = turbo mode (for crossing the barriers)
+//            } else {
+//                precisionActive = 1f; //no modifier
+//            }
+            if (gamepad1.left_bumper) {//if the left bumper is pressed, it multiplies the total power by the precision driving modifer
                 precisionActive = reductionModifier;
-            } else if (gamepad1.right_bumper || gamepad2.right_bumper) {
+            } else if (gamepad1.right_bumper) {
                 precisionActive = turboModifier;//right bumper = turbo mode (for crossing the barriers)
             } else {
                 precisionActive = 1f; //no modifier
@@ -154,7 +216,7 @@ public class TeleOp_358 extends OpMode {
             telemetry.addData("Encoder port 3 back right", robot.rb.getCurrentPosition());
             telemetry.addData("Encoder port 4 back left", robot.lb.getCurrentPosition());
 
-        }
+
 
         telemetry.addLine();
 
@@ -162,14 +224,14 @@ public class TeleOp_358 extends OpMode {
         //----------CLAW--------------
         //======================================
 
-        if (gamepad1.right_trigger > 0.5) {
+        if (gamepad2.right_trigger > 0.5) {
             robot.leftServo.setPosition(1);
             robot.rightServo.setPosition(0);
-            telemetry.addData("Right Trigger", gamepad1.x);
+            telemetry.addData("Right Trigger", gamepad2.x);
         } else {
             robot.leftServo.setPosition(0);
             robot.rightServo.setPosition(1);
-            telemetry.addData("Neither", gamepad1.b);
+            telemetry.addData("Neither", gamepad2.b);
             //======================================
             //----------CLAW ROTATOR----------------
             //======================================

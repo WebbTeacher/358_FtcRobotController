@@ -63,7 +63,7 @@ public class TeleOp_358 extends OpMode {
     // Declare OpMode members.
 
     //methods to control the speed of the robot.
-    private float speedModifier = .5f;
+    private float speedModifier = .65f;
     private float reductionModifier = .4f;//the amount that the speed will be decreased in precision mode. Should be < 1
     private float turboModifier = 1.9f;// the amount that the speed will be increased in turbo mode. Must be <2. No increase is 1.
     private float precisionActive = 1f;

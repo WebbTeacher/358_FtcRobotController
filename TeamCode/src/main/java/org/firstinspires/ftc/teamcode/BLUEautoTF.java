@@ -115,21 +115,35 @@ public class BLUEautoTF extends Driving358 {
         telemetry.update();
         waitForStart();
 
-        //move(.1, 'f', 10);
+        //move(.1, 'f', 5);
 
-        // parkLevel = checkLevel();
+        parkLevel = checkLevel();
+        telemetry.addData("Level","%d",parkLevel);
 
 
 
-        clawrotate("close");
+        //clawrotate("close");
 
-        move(0.3, 'f',40);
-        move(0.3,'r',20);
-        liftlevel(0.2, '1');
-        //liftconeauto(1, 0.3,'5');//takes first cone from stack
-        clawrotate("open");
-        move(0.3,'l',15);
+        move(0.3, 'f',35);
+        move(0.3,'r',25);
+        //liftlevel(0.2, '1');
+        //  clawrotate("open");
+        /*for going back to starting point
+        move(0.3,'r',25);
         move(0.3, 'b',35);
+
+         */
+/*(for testing)
+        move(0.3, 'f',10);
+        move(0.3, 'b',10);
+        move(0.3, 'f',10);
+        move(0.3, 'b',10);
+        move(0.3, 'l',10);
+        move(0.3, 'r',10);
+        move(0.3, 'l',10);
+        move(0.3, 'r',10);
+
+ */
 
         //then just park
 
@@ -159,25 +173,42 @@ public class BLUEautoTF extends Driving358 {
 
         switch (parkLevel) {//moves to the alliance shipping hub based on what it reads
             case (1)://Warehouse close. Scoring level 1. Bottom
+
+                /*(this code for returning to starting position)
                 move(.3, 'l', 55);
                 move(.3, 'f', 60);
+                */
+                move(.3, 'r', 30);
 
 
                 break;
             case (2)://Mid. Scoring level 2. Mid
 
+              /*  (this code for returning to starting position)
                 move(.3, 'f', 55);
 
+
+               */
+                move(.3, 'l', 25);
                 break;
             case (3)://warehouse far. scoring level 3 top
 
-
+                /*(this code for returning to starting position)
                 move(.3, 'r', 55);
                 move(.3, 'f', 60);
+                 */
+                move(.3, 'l', 58);
 
                 break;
             default:
-                move(.3, 'l', 5);//orginially 55
+                /*returning to starting position
+                move(.3, 'l', 5);//orginialy 55
+
+                 */
+                move (0.3,'r', 30);
+                move (0.3,'b', 40);
+
+
                 break;
         }
         //motorStop();

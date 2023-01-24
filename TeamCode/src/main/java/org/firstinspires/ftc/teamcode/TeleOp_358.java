@@ -119,21 +119,25 @@ public class    TeleOp_358 extends OpMode {
 //                stickR = gamepad2.right_stick_x;
 //            }
         //======================================
-        //----------Lift--------------capyright 19888
+        //----------Lift--------------
         //======================================
 
 
-        if (Math.abs(gamepad1.right_stick_y) >.2 ) {
-
-            vm = gamepad1.right_stick_y;
+        if (gamepad1.right_trigger >0.05 || gamepad2.right_trigger >0.05 ) {
+            if(gamepad1.right_trigger>0.5)vm = -gamepad1.right_trigger;
+            else vm = -gamepad2.right_trigger;
         }
         //else if (robot.touch.isPressed()) vm = 0;
-        else if((Math.abs(gamepad1.right_stick_y) <.2 && Math.abs(gamepad1.right_stick_y) >0))
-            vm=0.1;
+        else if (gamepad2.right_bumper ) {
+           vm=0.4;
+        }
+//       else if (gamepad1.right_bumper || gamepad2.right_bumper ) {
+//           vm=0.4;
+//        }
 
-        if (Math.abs(gamepad2.right_stick_y) >.2 ) {
+        else {
 
-            vm = gamepad2.right_stick_y;
+            vm = -0.01;
         }
         //else if (robot.touch.isPressed()) vm = 0;
 //        else if (Math.abs(gamepad2.right_stick_y) <.2 && Math.abs(gamepad2.right_stick_y) >0)
@@ -266,7 +270,7 @@ public class    TeleOp_358 extends OpMode {
         //======================================
         //----------CLAW--------------
         //======================================
-        this.clawpressed = (gamepad2.right_trigger > 0.5);
+        this.clawpressed = ((gamepad2.left_trigger > 0.2)||gamepad1.a);
         if (this.clawpressed) robot.clawServo.setPosition(0.0);
         else  robot.clawServo.setPosition(0.8);
         /*

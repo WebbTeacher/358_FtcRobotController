@@ -1,27 +1,4 @@
-/*
- * Copyright (c) 2021 OpenFTC Team
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package org.firstinspires.ftc.teamcode;
-
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -33,7 +10,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-public class AprilTagAutonomousInitDetectionExample extends Driving358
+public class lucashahah extends Driving358
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -72,7 +49,7 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
             @Override
             public void onOpened()
             {
-                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);//Stream in 1280*720 for better viewing window
+                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
@@ -103,7 +80,7 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
                     {
                         tagOfInterest = tag;
                         tagFound = true;
-                        break; //if you break here your tag id won't change after randomization
+                        break;
                     }
                 }
 
@@ -154,17 +131,15 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
          */
 
 
-        //starting moves
-        //clawrotate("open");
+        //starting
         clawrotate("close");
-        //sleep(5000);
-        move (0.3,'l',35);
-        move(0.3, 'f',38);
-        move(0.3,'r',17);
+        move (0.3,'l',10);
+        move(0.3, 'f',54);
+        move(0.3,'l',20);
 //        move(0.3, 'f',38);
 //        move(0.3,'r',21);
         long starting= System.currentTimeMillis();
-        robot.lift.setPower(0.2);
+        robot.lift.setPower(0.6);
         while (((System.currentTimeMillis()- starting) <1800)){
 
         }
@@ -192,7 +167,7 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
 
         /* Actually do something useful */
         if (tagOfInterest == null){
-            move (0.3,'l', 30);
+            move (0.3,'r', 30);
             move (0.3,'b', 40);
 
 
@@ -203,13 +178,11 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
             move(.3, 'l', 30);
         }
         else if (tagOfInterest.id == CENTER) {
-            move(.3, 'r', 22);
+            move(.3, 'l', 25);
         }
         else if (tagOfInterest.id == RIGHT) {
-            move(.3, 'r', 58);
+            move(.3, 'r', 56);
         }
-
-
 
 
 
@@ -227,4 +200,6 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
         telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
         telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
     }
+
 }
+

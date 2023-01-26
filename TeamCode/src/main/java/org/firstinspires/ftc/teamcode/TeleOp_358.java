@@ -57,7 +57,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp(name="TELEOP") // i will come soon. when the 3d print is done, make sure u watch ur back
 //@Disabled
-public class    TeleOp_358 extends OpMode {
+public class TeleOp_358 extends OpMode {
 
     Hardware358 robot = new Hardware358();
     // Declare OpMode members.

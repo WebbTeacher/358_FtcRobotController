@@ -196,13 +196,13 @@ public abstract class Driving358 extends LinearOpMode {
 
 
         robot.lift.setPower(-0.2);
-        while (starting - System.currentTimeMillis()<100){
-            if(robot.touch.isPressed()){
-                robot.lift.setPower(0);
-                telemetry.addData("touch pressed",1);
-                break;
-            }
+        while (starting - System.currentTimeMillis()<2500){
 
+//            if(robot.touch.isPressed()){
+//                robot.lift.setPower(0);
+//                telemetry.addData("touch pressed",1);
+//                break;
+//            }
         }
         //robot.lift.setPower(0);
 

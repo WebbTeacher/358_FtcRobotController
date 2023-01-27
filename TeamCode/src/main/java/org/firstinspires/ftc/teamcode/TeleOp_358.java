@@ -8,6 +8,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -93,6 +94,7 @@ public class TeleOp_358 extends OpMode {
 //        telemetry.addData("Claw Distance", clawDistanceMeasure);
 //        telemetry.addData("Distance from Back", robot.backDist.getDistance(DistanceUnit.CM));
 //        telemetry.addData("Touch Sensor Pressed", robot.magStopBottom.getValue());//should indicate whether the touch sensor is pressed.
+
 
         robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //======================================

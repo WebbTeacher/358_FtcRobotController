@@ -33,7 +33,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 @Autonomous
-public class AprilTagAutonomousInitDetectionExample extends Driving358
+public class apriltag_blue_corner extends Driving358
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -72,7 +72,7 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
             @Override
             public void onOpened()
             {
-                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);//Stream in 1280*720 for better viewing window
+                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
@@ -90,7 +90,6 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
          */
         while (!isStarted() && !isStopRequested())
         {
-            clawrotate("close");
             ArrayList<AprilTagDetection> currentDetections = aprilTagDetectionPipeline.getLatestDetections();
 
             if(currentDetections.size() != 0)
@@ -103,7 +102,7 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
                     {
                         tagOfInterest = tag;
                         tagFound = true;
-                        break; //if you break here your tag id won't change after randomization
+                        break;
                     }
                 }
 
@@ -157,32 +156,54 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
         //starting moves
         //clawrotate("open");
         clawrotate("close");
-        //sleep(5000);
-
-
-        /*
-        move (0.3,'l',35);
-        move(0.3, 'f',38);
-        move(0.3,'r',17);
-
-         */
-        move (0.3,'f',35);
-        move(0.3, 'f',38);
-        move(0.3,'r',17);
-
-//        move(0.3, 'f',38);
-//        move(0.3,'r',21);
+/* for the lowest junction
+        move(0.3, 'f',35);
+        move(0.3,'r',25);
         long starting= System.currentTimeMillis();
         robot.lift.setPower(0.2);
-        while (((System.currentTimeMillis()- starting) <1800)){
+        while (((System.currentTimeMillis()- starting) <2900)){
 
         }
-        sleep(100);
-        move(0.3, 'f',7);
-        robot.lift.setPower(0.01);
-        sleep(1000);
+        robot.lift.setPower(0);
+
+
+        if (tagOfInterest == null){
+            move (0.3,'l', 30);
+            move (0.3,'b', 40);
+
+
+
+        }
+        //else if (tagOfInterest.id== LEFT) move(0.1,'f',10);
+        else if (tagOfInterest.id== LEFT) {
+            move(.3, 'r', 58);
+
+        }
+        else if (tagOfInterest.id == CENTER) {
+            move(.3, 'r', 25);
+        }
+        else if (tagOfInterest.id == RIGHT) {
+            move(.3, 'l', 30);
+        }
+
+ */
+        move(0.3, 'f',70);
+        move(0.3,'l',15);
+        long starting= System.currentTimeMillis();
+        robot.lift.setPower(0.4);
+        while (((System.currentTimeMillis() - starting) < 2700)){
+
+        }
+        robot.lift.setPower(0);
+
+        //liftlevel(0.2,'1');
         clawrotate("open");
-        move(0.3, 'b',7);
+        liftdown();
+
+        move(0.3,'r',50);
+        rotate(0.2,'r', 90);
+        liftconeauto(1, 0.2,'5');
+        //clawrotate("close");
 
 
 
@@ -209,17 +230,28 @@ public class AprilTagAutonomousInitDetectionExample extends Driving358
         }
         //else if (tagOfInterest.id== LEFT) move(0.1,'f',10);
         else if (tagOfInterest.id== LEFT) {
-            move(.3, 'l', 30);
+            move(.3, 'r', 10);
+
         }
         else if (tagOfInterest.id == CENTER) {
-            move(.3, 'r', 22);
+            move(.3, 'r', 25);
         }
         else if (tagOfInterest.id == RIGHT) {
-            move(.3, 'r', 58);
+            move(.3, 'l', 30);
         }
 
 
+        /*
+        if(tagOfInterest == null || tagOfInterest.id == LEFT){
 
+        }
+        else if(tagOfInterest.id == CENTER){
+
+        }
+        else{
+
+        }
+         */
 
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */

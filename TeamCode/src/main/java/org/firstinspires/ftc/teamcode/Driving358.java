@@ -95,20 +95,26 @@ public abstract class Driving358 extends LinearOpMode {
 
         switch (remaining){
             case '5':
-                cmMoveauto = 11;
-                ticks = tickConversion * cmMoveauto * direction;
-                //robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-                robot.lift.setTargetPosition((ticks));
-                robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.lift.setPower(power);
-
-                while (robot.lift.isBusy())
-                {
+                long starting= System.currentTimeMillis();
+                robot.lift.setPower(0.1);
+                while (starting - System.currentTimeMillis()<200){
 
                 }
                 robot.lift.setPower(0);
-                robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//                cmMoveauto = 11;
+//                ticks = tickConversion * cmMoveauto * direction;
+//                //robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//                robot.lift.setTargetPosition((ticks));
+//                robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                robot.lift.setPower(power);
+//
+//                while (robot.lift.isBusy())
+//                {
+//
+//                }
+//                robot.lift.setPower(0);
+//                robot.lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
                 break;
 
@@ -196,7 +202,7 @@ public abstract class Driving358 extends LinearOpMode {
 
 
         robot.lift.setPower(-0.2);
-        while (starting - System.currentTimeMillis()<2500){
+        while (starting - System.currentTimeMillis()<2600){
 
 //            if(robot.touch.isPressed()){
 //                robot.lift.setPower(0);
@@ -204,7 +210,7 @@ public abstract class Driving358 extends LinearOpMode {
 //                break;
 //            }
         }
-        //robot.lift.setPower(0);
+        robot.lift.setPower(0);
 
 
 //        while (robot.lift.isBusy()) {

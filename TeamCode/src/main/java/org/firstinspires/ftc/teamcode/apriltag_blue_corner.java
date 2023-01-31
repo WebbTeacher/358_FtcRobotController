@@ -156,6 +156,14 @@ public class apriltag_blue_corner extends Driving358
         //starting moves
         //clawrotate("open");
         clawrotate("close");
+
+
+
+
+
+
+
+
 /* for the lowest junction
         move(0.3, 'f',35);
         move(0.3,'r',25);
@@ -187,27 +195,53 @@ public class apriltag_blue_corner extends Driving358
         }
 
  */
+        //for highest junction
+
+
         move(0.3, 'f',70);
         move(0.3,'l',15);
         long starting= System.currentTimeMillis();
         robot.lift.setPower(0.4);
-        while (((System.currentTimeMillis() - starting) < 2700)){
+        while (((System.currentTimeMillis() - starting) < 2600)){
 
         }
         robot.lift.setPower(0);
 
         //liftlevel(0.2,'1');
         clawrotate("open");
-        liftdown();
+        long startingdown = System.currentTimeMillis();
+        robot.lift.setPower(-0.4);
+        while (((System.currentTimeMillis() - startingdown) < 2600)){
 
-        move(0.3,'r',50);
-        rotate(0.2,'r', 90);
-        liftconeauto(1, 0.2,'5');
+        }
+        robot.lift.setPower(0);
+       // liftdown();
+
+        move(0.3,'r',10);
+        rotate(0.2,'r', 130);
+        //liftconeauto(1, 0.2,'5');
+        //rotate(0.2,'l', 90);
+       //move(0.3,'b',50);
         //clawrotate("close");
+        long starting5 = System.currentTimeMillis();
+        robot.lift.setPower(0.4);
+        while (((System.currentTimeMillis() - starting5) < 1200)){
+
+        }
+        robot.lift.setPower(0);
+        clawrotate("close");
+         startingdown = System.currentTimeMillis();
+        robot.lift.setPower(-.4);
+        while (((System.currentTimeMillis() - startingdown) < 1200)){
+
+        }
+        robot.lift.setPower(0);
+        clawrotate("open");
 
 
 
-        /* Update the telemetry */
+
+        // Update the telemetry
         if(tagOfInterest != null)
         {
             telemetry.addLine("Tag snapshot:\n");
@@ -220,7 +254,7 @@ public class apriltag_blue_corner extends Driving358
             telemetry.update();
         }
 
-        /* Actually do something useful */
+        // Actually do something useful
         if (tagOfInterest == null){
             move (0.3,'l', 30);
             move (0.3,'b', 40);
@@ -241,17 +275,12 @@ public class apriltag_blue_corner extends Driving358
         }
 
 
-        /*
-        if(tagOfInterest == null || tagOfInterest.id == LEFT){
 
-        }
-        else if(tagOfInterest.id == CENTER){
 
-        }
-        else{
 
-        }
-         */
+
+
+        //^end here
 
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */

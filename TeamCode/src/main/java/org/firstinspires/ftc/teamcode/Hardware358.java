@@ -46,6 +46,7 @@ public class Hardware358 {
     public DcMotor lb = null; // left back
     // public DcMotor m = null; //middle
     public DcMotor lift = null;
+    public DcMotor rlift = null;
     //public Servo rightServo = null;
     //public Servo leftServo = null;
     public Servo clawServo = null;
@@ -89,6 +90,7 @@ public class Hardware358 {
         lb = HwMap.get(DcMotor.class, "lb");
         //m = HwMap.get(DcMotor.class, "mid");
         lift = HwMap.get(DcMotor.class, "lift");
+        rlift = HwMap.get(DcMotor.class, "rlift");
         //leftServo = HwMap.get(Servo.class,"leftServo");
         //rightServo = HwMap.get(Servo.class,"rightServo");
         clawServo = HwMap.get(Servo.class,"clawServo");
@@ -102,6 +104,7 @@ public class Hardware358 {
         rb.setDirection(DcMotor.Direction.FORWARD);
         //m.setDirection(DcMotor.Direction.FORWARD);
         lift.setDirection(DcMotor.Direction.FORWARD);
+        rlift.setDirection(DcMotor.Direction.FORWARD);
 
         lf.setPower(0);
         rf.setPower(0);
@@ -109,6 +112,7 @@ public class Hardware358 {
         rb.setPower(0);
         //m.setPower(0);
         lift.setPower(0);
+        rlift.setPower(0);
         slideServo.setPower(0);
 
 
@@ -122,6 +126,7 @@ public class Hardware358 {
         rb.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //m.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rlift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
 //        // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.

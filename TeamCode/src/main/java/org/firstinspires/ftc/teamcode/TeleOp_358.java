@@ -254,6 +254,7 @@ public class TeleOp_358 extends OpMode {
         robot.lb.setPower(-speedModifier * v3 * precisionActive);
         robot.rb.setPower(-speedModifier * v4 * precisionActive);
         robot.lift.setPower(-speedModifier * vm * precisionActive);
+        robot.rlift.setPower(speedModifier * vm * precisionActive);
 
         telemetry.addData("fLPower", -speedModifier * v1 * precisionActive);
         telemetry.addData("fRPower", -speedModifier * v2 * precisionActive);
@@ -273,8 +274,14 @@ public class TeleOp_358 extends OpMode {
         //----------CLAW--------------
         //======================================
         this.clawpressed = ((gamepad2.left_trigger > 0.2)||gamepad1.a);
-        if (this.clawpressed) robot.clawServo.setPosition(0.0);
-        else  robot.clawServo.setPosition(0.8);
+        if (this.clawpressed) {
+            robot.clawServo.setPosition(0.0);
+
+        }
+        else  {
+            robot.clawServo.setPosition(0.8);
+
+        }
         /*
         if (gamepad2.right_trigger > 0.5&& !this.clawpressed) {
             this.clawpressed = true;

@@ -37,6 +37,7 @@ public abstract class Driving358 extends LinearOpMode {
         robot.lb.setPower(0);
         robot.rb.setPower(0);
         robot.lift.setPower(0);
+        robot.rlift.setPower(0);
 
         //robot.rotateLeft.setPower(0);
         //robot.rotateRight.setPower(0);

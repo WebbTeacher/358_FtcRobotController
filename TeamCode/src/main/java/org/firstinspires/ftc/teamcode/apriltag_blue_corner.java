@@ -198,45 +198,93 @@ public class apriltag_blue_corner extends Driving358
         //for highest junction
 
 
-        move(0.3, 'f',70);
-        move(0.3,'l',15);
-        long starting= System.currentTimeMillis();
-        robot.lift.setPower(0.4);
-        while (((System.currentTimeMillis() - starting) < 2600)){
+//        move(0.3, 'f',70);
+//        move(0.3,'l',15);
+//        long starting= System.currentTimeMillis();
+//        robot.lift.setPower(0.4);
+//        while (((System.currentTimeMillis() - starting) < 2600)){
+//
+//        }
+//        robot.lift.setPower(0);
+//        robot.lift.setPower(0.1);
+//        while (((System.currentTimeMillis() - starting) < 2000)){
+//
+//        }
+//        robot.lift.setPower(0.1);
 
-        }
-        robot.lift.setPower(0);
-
-        //liftlevel(0.2,'1');
-        clawrotate("open");
-        long startingdown = System.currentTimeMillis();
-        robot.lift.setPower(-0.4);
-        while (((System.currentTimeMillis() - startingdown) < 2600)){
-
-        }
-        robot.lift.setPower(0);
+//        move(0.3, 'f',7);
+//
+//        sleep (1000);
+//
+//        clawrotate("open");
+//        long startingdown = System.currentTimeMillis();
+//        move(0.3, 'b',3);
+//        robot.lift.setPower(-0.4);
+//        while (((System.currentTimeMillis() - startingdown) < 2600)){
+//
+//        }
+//        robot.lift.setPower(0);
        // liftdown();
 
-        move(0.3,'r',10);
-        rotate(0.2,'r', 130);
+//        move(0.3,'r',10);
+//        rotate(0.2,'r', 230);
+//        move(0.3,'f',33);
+        clawrotate("open");
         //liftconeauto(1, 0.2,'5');
         //rotate(0.2,'l', 90);
        //move(0.3,'b',50);
         //clawrotate("close");
         long starting5 = System.currentTimeMillis();
         robot.lift.setPower(0.4);
-        while (((System.currentTimeMillis() - starting5) < 1200)){
+        while (((System.currentTimeMillis() - starting5) < 1000)){//NEED TO GO UP MORE
 
         }
-        robot.lift.setPower(0);
+        robot.lift.setPower(0.01);
+
+        move(0.3,'f',10);
+
+        robot.lift.setPower(-0.4);
+        long down5 = System.currentTimeMillis();
+        while (((System.currentTimeMillis() - down5) < 600)){
+
+        }
+        robot.lift.setPower(0.01);
+
         clawrotate("close");
-         startingdown = System.currentTimeMillis();
-        robot.lift.setPower(-.4);
-        while (((System.currentTimeMillis() - startingdown) < 1200)){
+        robot.lift.setPower(0.4);
+        long upagain5 = System.currentTimeMillis();
+        while (((System.currentTimeMillis() - upagain5) < 700)){
 
         }
-        robot.lift.setPower(0);
+        robot.lift.setPower(0.05);
+        move(0.3,'b',5);
+        clawrotate("close");
+        move(0.3,'r',5);
+        move(0.3,'b',70);
+        move(0.3,'l',25);
+
+
+        long starting= System.currentTimeMillis();
+        robot.lift.setPower(0.4);
+        while (((System.currentTimeMillis() - starting) < 2600)){
+
+        }
+        robot.lift.setPower(0.01);
+        move(0.3,'f',13);
+        move(0.3,'l',3);
         clawrotate("open");
+        move(0.3,'b',7);
+
+
+
+
+//        long startingdown = System.currentTimeMillis();
+//        robot.lift.setPower(-.4);
+//        while (((System.currentTimeMillis() - startingdown) < 1200)){
+//
+//        }
+//        robot.lift.setPower(0);
+       // clawrotate("open");
 
 
 
@@ -256,8 +304,8 @@ public class apriltag_blue_corner extends Driving358
 
         // Actually do something useful
         if (tagOfInterest == null){
-            move (0.3,'l', 30);
-            move (0.3,'b', 40);
+            //move (0.3,'l', 30);
+            //move (0.3,'b', 40);
 
 
 

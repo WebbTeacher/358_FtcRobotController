@@ -45,6 +45,16 @@ public abstract class Driving358 extends LinearOpMode {
         reset();
     }
 
+
+    public void polesensing(){
+
+
+
+
+    }
+
+
+
     public void reset(){
         robot.lf.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.lb.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

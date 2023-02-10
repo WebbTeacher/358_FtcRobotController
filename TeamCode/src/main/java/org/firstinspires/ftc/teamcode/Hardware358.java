@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -41,6 +43,10 @@ public class Hardware358 {
 
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
     public DcMotor lf = null; // left front
+    public ColorSensor colorSensor;
+    public DistanceSensor distanceSensor;
+    // get a reference to the distance sensor that shares the same name.
+
     public DcMotor rf = null; // right front
     public DcMotor rb = null; // right back
     public DcMotor lb = null; // left back
@@ -83,6 +89,12 @@ public class Hardware358 {
 //        leftDrive  = myOpMode.hardwareMap.get(DcMotor.class, "left_drive");
 //        rightDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive");
 //        armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "arm");
+
+        colorSensor = HwMap.get(ColorSensor.class, "sensor_color");
+
+        // get a reference to the distance sensor that shares the same name.
+        DistanceSensor distanceSensor = HwMap.get(DistanceSensor.class, "sensor_color");
+
         touch= HwMap.get(TouchSensor.class,"Touch");
         lf = HwMap.get(DcMotor.class, "lf");
         rf = HwMap.get(DcMotor.class, "rf");

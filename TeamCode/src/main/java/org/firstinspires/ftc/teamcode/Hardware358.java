@@ -44,6 +44,7 @@ public class Hardware358 {
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
     public DcMotor lf = null; // left front
     public ColorSensor colorSensor;
+    public ColorSensor colorSensorright;
     public DistanceSensor distanceSensor;
     // get a reference to the distance sensor that shares the same name.
 
@@ -91,6 +92,7 @@ public class Hardware358 {
 //        armMotor   = myOpMode.hardwareMap.get(DcMotor.class, "arm");
 
         colorSensor = HwMap.get(ColorSensor.class, "sensor_color");
+        colorSensorright = HwMap.get(ColorSensor.class, "colorSensorright");
 
         // get a reference to the distance sensor that shares the same name.
         DistanceSensor distanceSensor = HwMap.get(DistanceSensor.class, "sensor_color");

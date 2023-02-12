@@ -156,6 +156,10 @@ public class apriltag_blue_corner extends Driving358
         //starting moves
         //clawrotate("open");
         clawrotate("close");
+        telemetry.addData("Alpha", robot.colorSensor.alpha());
+        telemetry.addData("Red  ", robot.colorSensor.red());
+        telemetry.addData("Green", robot.colorSensor.green());
+        telemetry.addData("Blue ", robot.colorSensor.blue());
 
 
 
@@ -234,6 +238,13 @@ public class apriltag_blue_corner extends Driving358
         //rotate(0.2,'l', 90);
        //move(0.3,'b',50);
         //clawrotate("close");
+
+
+
+/*
+
+
+
         long starting5 = System.currentTimeMillis();
         robot.lift.setPower(0.4);
         while (((System.currentTimeMillis() - starting5) < 1000)){//NEED TO GO UP MORE
@@ -274,6 +285,27 @@ public class apriltag_blue_corner extends Driving358
         move(0.3,'l',3);
         clawrotate("open");
         move(0.3,'b',7);
+
+
+ */
+
+         if (robot.colorSensorright.red()>0){
+             telemetry.addData("ran1", robot.colorSensorright.alpha());
+         }
+
+
+
+
+
+        if (robot.colorSensor.red()>40&&robot.colorSensor.red()<600&& robot.colorSensor.green()>40&&robot.colorSensor.green()<600){
+            telemetry.addData("ran", robot.colorSensor.alpha());
+            robot.lift.setPower(0.4);
+            long upagain51 = System.currentTimeMillis();
+            while (((System.currentTimeMillis() - upagain51) < 700)){
+
+            }
+            robot.lift.setPower(0.05);
+        }
 
 
 

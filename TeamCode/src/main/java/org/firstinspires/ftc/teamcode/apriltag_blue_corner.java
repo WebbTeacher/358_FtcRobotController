@@ -199,40 +199,47 @@ public class apriltag_blue_corner extends Driving358
         }
 
  */
+
+
+
+
+
+
+
         //for highest junction
 
+/*
+        move(0.3, 'f',70);
+        move(0.3,'l',15);
+        long starting= System.currentTimeMillis();
+        robot.lift.setPower(0.4);
+        while (((System.currentTimeMillis() - starting) < 2600)){
 
-//        move(0.3, 'f',70);
-//        move(0.3,'l',15);
-//        long starting= System.currentTimeMillis();
-//        robot.lift.setPower(0.4);
-//        while (((System.currentTimeMillis() - starting) < 2600)){
-//
-//        }
-//        robot.lift.setPower(0);
-//        robot.lift.setPower(0.1);
-//        while (((System.currentTimeMillis() - starting) < 2000)){
-//
-//        }
-//        robot.lift.setPower(0.1);
+        }
+        robot.lift.setPower(0);
+        robot.lift.setPower(0.1);
+        while (((System.currentTimeMillis() - starting) < 2000)){
 
-//        move(0.3, 'f',7);
-//
-//        sleep (1000);
-//
-//        clawrotate("open");
-//        long startingdown = System.currentTimeMillis();
-//        move(0.3, 'b',3);
-//        robot.lift.setPower(-0.4);
-//        while (((System.currentTimeMillis() - startingdown) < 2600)){
-//
-//        }
-//        robot.lift.setPower(0);
-       // liftdown();
+        }
+        robot.lift.setPower(0.1);
 
-//        move(0.3,'r',10);
-//        rotate(0.2,'r', 230);
-//        move(0.3,'f',33);
+        move(0.3, 'f',7);
+
+        sleep (1000);
+
+        clawrotate("open");
+        long startingdown = System.currentTimeMillis();
+        move(0.3, 'b',3);
+        robot.lift.setPower(-0.4);
+        while (((System.currentTimeMillis() - startingdown) < 2600)){
+
+        }
+        robot.lift.setPower(0);
+        liftdown();
+
+        move(0.3,'r',10);
+        rotate(0.2,'r', 230);
+        move(0.3,'f',33);
         clawrotate("open");
         //liftconeauto(1, 0.2,'5');
         //rotate(0.2,'l', 90);
@@ -240,10 +247,12 @@ public class apriltag_blue_corner extends Driving358
         //clawrotate("close");
 
 
+ */
+
 
 /*
 
-
+//THE CODEEE for grabbing from stack
 
         long starting5 = System.currentTimeMillis();
         robot.lift.setPower(0.4);
@@ -283,6 +292,8 @@ public class apriltag_blue_corner extends Driving358
         robot.lift.setPower(0.01);
         move(0.3,'f',13);
         move(0.3,'l',3);
+        colortest();
+
         clawrotate("open");
         move(0.3,'b',7);
 
@@ -306,6 +317,15 @@ public class apriltag_blue_corner extends Driving358
             }
             robot.lift.setPower(0.05);
         }
+
+        if (robot.colorSensor.red()>2000&&robot.colorSensor.red()< 4000&& robot.colorSensor.green()>2000&&robot.colorSensor.green()<4000){
+            move(0.3,'r',7);
+        }
+        if (robot.colorSensorright.red()>2000&&robot.colorSensorright.red()< 3000&& robot.colorSensorright.green()>2000&&robot.colorSensorright.green()<3000){
+            move(0.3,'l',7);
+        }
+
+
 
 
 

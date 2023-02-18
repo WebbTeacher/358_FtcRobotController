@@ -96,10 +96,24 @@ public class TeleOp_358 extends OpMode {
 //        telemetry.addData("Touch Sensor Pressed", robot.magStopBottom.getValue());//should indicate whether the touch sensor is pressed.
 
 
-        robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.lift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robot.rlift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //======================================
         //------------WHEEL CODE----------------
         //======================================
+
+        if (gamepad2.dpad_down){
+            telemetry.addData("dpad_downe",1);
+            robot.testmotor.setPower(0.9);
+
+        }
+
+        if (gamepad2.dpad_up){
+            telemetry.addData("dpadup",1);
+            robot.testmotor.setPower(-0.9);
+        }
+
+
 
         double stickX = 0;
         double stickY = 0;
@@ -117,12 +131,11 @@ public class TeleOp_358 extends OpMode {
         if (Math.abs(gamepad1.right_stick_x) >.2) {
             stickR = gamepad1.right_stick_x;
         }
-//            else {
-//                stickR = gamepad2.right_stick_x;
-//            }
+
         //======================================
         //----------Lift--------------
         //======================================
+
 
 
         if (gamepad1.right_trigger >0.05 || gamepad2.right_trigger >0.05 ) {
@@ -145,16 +158,7 @@ public class TeleOp_358 extends OpMode {
 //        else if (Math.abs(gamepad2.right_stick_y) <.2 && Math.abs(gamepad2.right_stick_y) >0)
 //            vm=0.15;
 
-        //FOR controlling slider
-        /*
-        if (Math.abs(gamepad2.left_stick_y)>.2){
-            robot.slideServo.setPower(gamepad2.left_stick_y);
-        }
-        else {
-            robot.slideServo.setPower(0);
-        }
 
-         */
 
         //int ticks = tickConversion * cmMove * direction;
 
@@ -192,7 +196,6 @@ public class TeleOp_358 extends OpMode {
 
         if (enco) {
             int ticks = tickConversion * cmMove;
-//                robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.lift.setTargetPosition((ticks));
             robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.lift.setPower(.2);
@@ -205,12 +208,15 @@ public class TeleOp_358 extends OpMode {
             cmMove = 0;
         }
 //change right to left bumper
+
+  /*
+  //for touch sensor, we dont use anymore
+
+
         if (gamepad2.left_bumper){
             boolean test = true;
             robot.lift.setPower(-.2);
 
-
-            //og code
             while (robot.lift.isBusy() || test ) {
                 if(robot.touch.isPressed()){
                     robot.lift.setPower(0);
@@ -222,6 +228,8 @@ public class TeleOp_358 extends OpMode {
             }
 
         }
+
+   */
 
         //variables
         double r = Math.hypot(-stickX, stickY); //ur mom is watching you from the ceiling. dont look up...

@@ -81,8 +81,20 @@ public abstract class Driving358 extends LinearOpMode {
 
     }
 
+    public void timelift(double power, int timet){
+        robot.lift.setPower(power);
+        long timecur= System.currentTimeMillis();
+        while (((System.currentTimeMillis() - timecur) < timet)){
 
-    //
+        }
+        robot.lift.setPower(0.05);
+    }
+
+
+
+
+
+
     public void liftconeauto(int direction, double power,char remaining){
         //remaining is for the number of cones remaining in the stack
         int tickConversion = (int)(COUNTS_PER_MOTOR_REV/(3.14));//145; //How many ticks per 1cm of string pulled
@@ -90,15 +102,6 @@ public abstract class Driving358 extends LinearOpMode {
         //            (WHEEL_DIAMETER_INCHES * 3.14);
         int cmMoveauto = 0;
         int ticks;
-//        if (position.equals("low")){
-//            cmMove  = 35;
-//        }
-//        else if (position.equals("mid")){
-//            cmMove  = 60;
-//        }
-//        else if (position.equals("high")){
-//            cmMove  = 85;
-//        }
 
 
 
@@ -237,6 +240,8 @@ public abstract class Driving358 extends LinearOpMode {
 //        }
 
     }
+
+
 
 
 

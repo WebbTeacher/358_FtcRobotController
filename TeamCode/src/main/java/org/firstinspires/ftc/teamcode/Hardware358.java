@@ -48,6 +48,11 @@ public class Hardware358 {
     public DistanceSensor distanceSensor;
     // get a reference to the distance sensor that shares the same name.
 
+
+    public DcMotor testmotor = null;
+
+
+
     public DcMotor rf = null; // right front
     public DcMotor rb = null; // right back
     public DcMotor lb = null; // left back
@@ -108,9 +113,9 @@ public class Hardware358 {
         //leftServo = HwMap.get(Servo.class,"leftServo");
         //rightServo = HwMap.get(Servo.class,"rightServo");
         clawServo = HwMap.get(Servo.class,"clawServo");
-
+        testmotor = HwMap.get(DcMotor.class, "testmotor");
         //CRSERVO
-        slideServo = HwMap.get(CRServo.class, "crservo");
+        slideServo = HwMap.get(CRServo.class, "crservo");// no longer using this
 
         lf.setDirection(DcMotor.Direction.REVERSE);
         rf.setDirection(DcMotor.Direction.FORWARD);
@@ -124,7 +129,7 @@ public class Hardware358 {
         rf.setPower(0);
         lb.setPower(0);
         rb.setPower(0);
-        //m.setPower(0);
+
         lift.setPower(0);
         rlift.setPower(0);
         slideServo.setPower(0);

@@ -271,6 +271,14 @@ public class apriltag_blue_corner extends Driving358
         robot.lift.setPower(0.01);
 
         clawrotate("close");
+
+
+
+        //tEST THIS code below
+        timelift(0.4,700);
+
+
+        //
         robot.lift.setPower(0.4);
         long upagain5 = System.currentTimeMillis();
         while (((System.currentTimeMillis() - upagain5) < 700)){
@@ -306,24 +314,39 @@ public class apriltag_blue_corner extends Driving358
 
 
 
+// for testing the color sensor
+
+//        if (robot.colorSensor.red()>40&&robot.colorSensor.red()<600&& robot.colorSensor.green()>40&&robot.colorSensor.green()<600){
+//            telemetry.addData("ran", robot.colorSensor.alpha());
+//            robot.lift.setPower(0.4);
+//            long upagain51 = System.currentTimeMillis();
+//            while (((System.currentTimeMillis() - upagain51) < 700)){
+//
+//            }
+//            robot.lift.setPower(0.05);
+//        }
 
 
-        if (robot.colorSensor.red()>40&&robot.colorSensor.red()<600&& robot.colorSensor.green()>40&&robot.colorSensor.green()<600){
-            telemetry.addData("ran", robot.colorSensor.alpha());
-            robot.lift.setPower(0.4);
-            long upagain51 = System.currentTimeMillis();
-            while (((System.currentTimeMillis() - upagain51) < 700)){
 
-            }
-            robot.lift.setPower(0.05);
-        }
-
+   /*
         if (robot.colorSensor.red()>2000&&robot.colorSensor.red()< 4000&& robot.colorSensor.green()>2000&&robot.colorSensor.green()<4000){
             move(0.3,'r',7);
         }
         if (robot.colorSensorright.red()>2000&&robot.colorSensorright.red()< 3000&& robot.colorSensorright.green()>2000&&robot.colorSensorright.green()<3000){
             move(0.3,'l',7);
         }
+
+    */
+
+        long startingdown = 0;
+     move(0.2,'l',10);
+     sleep(500);
+     colortest();
+        robot.lift.setPower(-0.4);
+        while (((System.currentTimeMillis() - startingdown) < 2600)){
+
+        }
+        robot.lift.setPower(0);
 
 
 

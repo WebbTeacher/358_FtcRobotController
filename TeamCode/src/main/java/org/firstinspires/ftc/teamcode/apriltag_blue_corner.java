@@ -167,7 +167,7 @@ public class apriltag_blue_corner extends Driving358
 
 
 
-
+//for the lowest junction
 /* for the lowest junction
         move(0.3, 'f',35);
         move(0.3,'r',25);
@@ -208,7 +208,7 @@ public class apriltag_blue_corner extends Driving358
 
         //for highest junction
 
-/*
+
         move(0.3, 'f',70);
         move(0.3,'l',15);
         long starting= System.currentTimeMillis();
@@ -216,12 +216,15 @@ public class apriltag_blue_corner extends Driving358
         while (((System.currentTimeMillis() - starting) < 2600)){
 
         }
-        robot.lift.setPower(0);
-        robot.lift.setPower(0.1);
-        while (((System.currentTimeMillis() - starting) < 2000)){
+        robot.lift.setPower(0.05);
 
-        }
-        robot.lift.setPower(0.1);
+       //not sure about below code
+
+//        robot.lift.setPower(0.1);
+//        while (((System.currentTimeMillis() - starting) < 2000)){
+//
+//        }
+//        robot.lift.setPower(0.05);
 
         move(0.3, 'f',7);
 
@@ -234,7 +237,7 @@ public class apriltag_blue_corner extends Driving358
         while (((System.currentTimeMillis() - startingdown) < 2600)){
 
         }
-        robot.lift.setPower(0);
+        robot.lift.setPower(0.01);
         liftdown();
 
         move(0.3,'r',10);
@@ -247,10 +250,10 @@ public class apriltag_blue_corner extends Driving358
         //clawrotate("close");
 
 
- */
 
 
-/*
+
+
 
 //THE CODEEE for grabbing from stack
 
@@ -278,13 +281,14 @@ public class apriltag_blue_corner extends Driving358
         timelift(0.4,700);
 
 
+//test timelift, should be the same as the lines commented off below
         //
-        robot.lift.setPower(0.4);
-        long upagain5 = System.currentTimeMillis();
-        while (((System.currentTimeMillis() - upagain5) < 700)){
-
-        }
-        robot.lift.setPower(0.05);
+//        robot.lift.setPower(0.4);
+//        long upagain5 = System.currentTimeMillis();
+//        while (((System.currentTimeMillis() - upagain5) < 700)){
+//
+//        }
+//        robot.lift.setPower(0.05);
         move(0.3,'b',5);
         clawrotate("close");
         move(0.3,'r',5);
@@ -292,7 +296,7 @@ public class apriltag_blue_corner extends Driving358
         move(0.3,'l',25);
 
 
-        long starting= System.currentTimeMillis();
+        starting= System.currentTimeMillis();
         robot.lift.setPower(0.4);
         while (((System.currentTimeMillis() - starting) < 2600)){
 
@@ -306,11 +310,11 @@ public class apriltag_blue_corner extends Driving358
         move(0.3,'b',7);
 
 
- */
 
-         if (robot.colorSensorright.red()>0){
-             telemetry.addData("ran1", robot.colorSensorright.alpha());
-         }
+//
+//         if (robot.colorSensorright.red()>0){
+//             telemetry.addData("ran1", robot.colorSensorright.alpha());
+//         }
 
 
 
@@ -328,17 +332,8 @@ public class apriltag_blue_corner extends Driving358
 
 
 
-   /*
-        if (robot.colorSensor.red()>2000&&robot.colorSensor.red()< 4000&& robot.colorSensor.green()>2000&&robot.colorSensor.green()<4000){
-            move(0.3,'r',7);
-        }
-        if (robot.colorSensorright.red()>2000&&robot.colorSensorright.red()< 3000&& robot.colorSensorright.green()>2000&&robot.colorSensorright.green()<3000){
-            move(0.3,'l',7);
-        }
 
-    */
-
-        long startingdown = 0;
+        startingdown = System.currentTimeMillis();
      move(0.2,'l',10);
      sleep(500);
      colortest();

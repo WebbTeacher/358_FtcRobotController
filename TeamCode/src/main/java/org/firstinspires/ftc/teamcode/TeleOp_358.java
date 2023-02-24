@@ -287,23 +287,24 @@ public class TeleOp_358 extends OpMode {
 
 
 
-        double SpinnerPower = gamepad1.dpad_left?1:(gamepad1.dpad_right?0.5:1);
-        robot.clawServo.setPosition(SpinnerPower);
+//        double SpinnerPower = gamepad1.dpad_left?1:(gamepad1.dpad_right?0.5:1);
+//        robot.clawServo.setPosition(SpinnerPower);
 
-        /*
-        if (gamepad1.left_trigger > 0.2) {
+
+        if (gamepad2.dpad_left) {
             telemetry.addData("claw", 1);
-            robot.clawServo.setPosition(0.5);
+            robot.clawServo.setPosition(0);
 
         }
-        if (gamepad1.a){
+        if (gamepad2.dpad_right){
             telemetry.addData("claw", 'a');
             robot.clawServo.setPosition(0.8);
 
         }
 
 
-         */
+
+
 
 
 

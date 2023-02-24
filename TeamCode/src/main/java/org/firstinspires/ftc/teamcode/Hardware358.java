@@ -137,7 +137,7 @@ public class Hardware358 {
 
         //leftServo.setPosition(0.6);
         //rightServo.setPosition(0.34);
-        clawServo.setPosition(0.0);
+        clawServo.setPosition(0.8);
 
         lf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rf.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

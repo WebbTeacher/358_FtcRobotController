@@ -247,10 +247,10 @@ public abstract class Driving358 extends LinearOpMode {
 
     public void colortest(){
         if (robot.colorSensor.red()>2000&&robot.colorSensor.red()< 3000&& robot.colorSensor.green()>2000&&robot.colorSensor.green()<3000){
-            move(0.3,'r',7);
+            move(0.3,'r',2);
         }
         if (robot.colorSensorright.red()>2000&&robot.colorSensorright.red()< 3000&& robot.colorSensorright.green()>2000&&robot.colorSensorright.green()<3000){
-            move(0.3,'l',7);
+            move(0.3,'l',2);
         }
     }
 

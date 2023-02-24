@@ -107,10 +107,16 @@ public class TeleOp_358 extends OpMode {
             robot.testmotor.setPower(0.9);
 
         }
+        else{
+            robot.testmotor.setPower(0.0);
+        }
 
         if (gamepad2.dpad_up){
             telemetry.addData("dpadup",1);
             robot.testmotor.setPower(-0.9);
+        }
+        else{
+            robot.testmotor.setPower(0.0);
         }
 
 
@@ -273,23 +279,36 @@ public class TeleOp_358 extends OpMode {
         telemetry.addData("Encoder port 2 front right", robot.rf.getCurrentPosition());
         telemetry.addData("Encoder port 3 back right", robot.rb.getCurrentPosition());
         telemetry.addData("Encoder port 4 back left", robot.lb.getCurrentPosition());
-
-
-
         telemetry.addLine();
 
         //======================================
         //----------CLAW--------------
         //======================================
-        this.clawpressed = ((gamepad2.left_trigger > 0.2)||gamepad1.a);
-        if (this.clawpressed) {
-            robot.clawServo.setPosition(0.0);
+
+
+
+        double SpinnerPower = gamepad1.dpad_left?1:(gamepad1.dpad_right?0.5:1);
+        robot.clawServo.setPosition(SpinnerPower);
+
+        /*
+        if (gamepad1.left_trigger > 0.2) {
+            telemetry.addData("claw", 1);
+            robot.clawServo.setPosition(0.5);
 
         }
-        else  {
+        if (gamepad1.a){
+            telemetry.addData("claw", 'a');
             robot.clawServo.setPosition(0.8);
 
         }
+
+
+         */
+
+
+
+
+
         /*
         if (gamepad2.right_trigger > 0.5&& !this.clawpressed) {
             this.clawpressed = true;
